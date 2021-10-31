@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	href="../static/CSS/addCSS.css" th:href="@{/CSS/addCSS.css}">
+<title>Add Toy</title>
+</head>
+<body>
+
+<div class="input">
+
+<form action="#" th:action="@{/addToy}" th:object="${toy}" method="get">
+
+	<h1>Add Toy</h1>
+	Name: <input type="text" th:field="*{name}"><br><br>
+	Price: <input type="text" th:field="*{price}"><br><br>
+	Quantity: <input type="text" th:field="*{quantity}"><br><br>
+	
+	<input type="submit" value="Submit"><br><br>
+	<a th:href="@{/}"><label>Go Home</label></a>
+	<br><br>
+	
+</form>
+
+	<div sec:authorize="isAuthenticated()">
+		User's name: <span sec:authentication="name"></span>
+		<br>
+		Roles: <span sec:authentication="principal.authorities"></span>
+		<br>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+	</div>
+	
+</div>
+
+</body>
+</html>

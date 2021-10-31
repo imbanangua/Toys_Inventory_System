@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<style>
+h1,h2{
+	background-color: #CED8F6;
+	text-align: center;
+}
+
+.list{
+	text-align: center; 
+	border: 2px solid black; 
+	border-radius: 15px; 
+	margin:0 auto; 
+	padding: 20px 0;
+	width: 600px; 
+	height: auto;
+}
+
+table{
+	margin:0 auto;
+}
+</style>
+<title>View Toys</title>
+
+</head>
+<body>
+
+<h2>Name: Yinan Song</h2>
+<h2>PROG32758 Enterprise Java Development - 1205_11184</h2>
+
+<h1>View Toys</h1>
+
+<div class="list">
+<table border="1">
+	<tr>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Quantity</th>
+	</tr>
+	<tr th:each="t : ${toyList}">
+		<td th:text="${t.name}"></td>
+		<td th:text="${t.price}"></td>
+		<td th:text="${t.quantity}"></td>
+		
+	</tr>
+</table>
+</div>
+
+</body>
+</html>

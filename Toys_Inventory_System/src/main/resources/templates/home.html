@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all"
+	href="../static/CSS/addCSS.css" th:href="@{/CSS/addCSS.css}">
+<title>Home page</title>
+</head>
+<body>
+
+<div class="input">
+	<a th:href="@{/goAddToy}"><label>Add Toy</label></a><br><br>
+	<a th:href="@{/view}"><label>View Toys</label></a><br><br>
+	
+	<div sec:authorize="hasRole('ROLE_BOSS')">
+		<a th:href="@{/sendEmailBoss}"><label>Send Email</label></a><br><br>
+	</div>
+	
+	<div sec:authorize="hasRole('ROLE_WORKER')">
+		<a th:href="@{/sendEmailWorker}"><label>Send Email</label></a><br><br>
+	</div>
+	
+	<div sec:authorize="isAnonymous()">
+    	<a th:href="@{/login}"><label>Click Here to Login</label></a><br><br>
+	</div>
+	
+	
+	<div sec:authorize="isAuthenticated()">
+		User's name: <span sec:authentication="name"></span>
+		<br>
+		Roles: <span sec:authentication="principal.authorities"></span>
+		<br>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+	</div>
+	
+</div>
+
+</body>
+</html>
